@@ -1,4 +1,4 @@
-from .character import Character
+from phrasehunter.character import Character
 
 
 class Phrase:
@@ -9,7 +9,7 @@ class Phrase:
     def __iter__(self):
         yield from self.phrase
 
-    def validated_guessed(self):
+    def validated_guessed_word(self):
         guessed = []
         for self.char in self.phrase:
             if self.char.was_guessed:

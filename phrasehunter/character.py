@@ -12,7 +12,7 @@ class Character:
             self.was_guessed = True
 
     def __str__(self):
-        return "{self.original}".format(self=self)
+        return f"{self._original}"
 
     @property
     def display_guess_data(self):
