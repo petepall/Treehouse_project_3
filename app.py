@@ -1,7 +1,7 @@
-# Import your Game class
+from phrasehunter.data import PHRASES
+from phrasehunter.game import Game
 
-# Create your Dunder Main statement.
 
-# Inside Dunder Main:
-## Create an instance of your Game class
-## Start your game by calling the instance method that starts the game loop
+if __name__ == "__main__":
+    phrase_game = Game(PHRASES)
+    phrase_game.game_initialization()

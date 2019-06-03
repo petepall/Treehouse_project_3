@@ -1,41 +1,22 @@
-class Character():
-    def __init__(self):
-        self._char = None
-        self._was_guessed = None
-        self._guess = None
-
-    def __str__(self):
-        return f"{self._char}"
-
-    @property
-    def char(self):
-        return self._char
-
-    @char.setter
-    def char(self, char_entry):
-        if len(char_entry) == 1:
-            self._char = char_entry
+class Character:
+    def __init__(self, original):
+        self.original = original
+        if self.original == ' ':
+            self.was_guessed = True
         else:
-            raise ValueError("You made a wrong entry")
-
-    @property
-    def was_guessed(self):
-        return self._was_guessed
-
-    @was_guessed.setter
-    def was_guessed(self):
-        if self._char == ' ':
-            self._was_guessed = True
-        else:
-            self._was_guessed = False
-
-    def show_guess(self):
-        if self._was_guessed:
-            return self._char
-        else:
-            return "_"
+            self.was_guessed = False
 
     def check_guess(self, guess):
-        self._guess = guess
-        if self._guess == self._char:
+        self.guess = guess
+        if self.guess.lower() == self.original.lower():
             self.was_guessed = True
+
+    def __str__(self):
+        return "{self.original}".format(self=self)
+
+    @property
+    def show_guess(self):
+        if self.was_guessed:
+            return self.original
+        else:
+            return "_"
