@@ -53,7 +53,7 @@ class Game:
         return guess.lower()
 
     def game_won(self):
-        if self.selected_phrase.all_guessed():
+        if self.selected_phrase.validated_guessed():
             clear_screen()
             self.welcome()
             print("Congratulations! You won the game!!")

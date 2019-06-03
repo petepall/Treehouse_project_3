@@ -15,7 +15,7 @@ class Character:
         return "{self.original}".format(self=self)
 
     @property
-    def show_guess(self):
+    def display_guess_data(self):
         if self.was_guessed:
             return self.original
         else:

@@ -9,7 +9,7 @@ class Phrase:
     def __iter__(self):
         yield from self.phrase
 
-    def all_guessed(self):
+    def validated_guessed(self):
         guessed = []
         for self.char in self.phrase:
             if self.char.was_guessed:
@@ -19,5 +19,5 @@ class Phrase:
 
     def display_phrase(self):
         for char in self.phrase:
-            print(char.show_guess, end=' ')
+            print(char.display_guess_data, end=' ')
         print("\n")
