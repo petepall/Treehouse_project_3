@@ -7,17 +7,31 @@ from phrasehunter.phrase import Phrase
 
 
 class Game:
+    """The game class is handling the main processing of the game.
+    """
     def __init__(self, phrases):
+        """Constructor for taking in the phrase and processing it into 
+        characters
+        
+        Parameters
+        ----------
+        phrases : string
+            Phrase that the user will have to guess.
+        """
         self.guesses = []
         self.phrases = [Phrase(phrase) for phrase in phrases.copy()]
         self.selected_phrase = choice(self.phrases)
         self.lives = 5
 
     def setup_screen(self):
+        """function to refresh the screen and show the latest data information
+        """
         clear_screen()
         self.header()
 
     def game_initialization(self):
+        """Setup the game loop
+        """
         while not self.display_game_won():
             self.setup_screen()
             player_guess = self.get_guess()
@@ -33,6 +47,9 @@ class Game:
         self.play_again(input("Would you like to play again? Y/n  "))
 
     def get_guess(self):
+        """Get the input from the user. Validate the entry and update the
+        number of remaining lives
+        """
         guess = ""
         while not guess:
             try:
@@ -59,6 +76,8 @@ class Game:
         return guess.lower()
 
     def display_game_won(self):
+        """Display the message to the user when he has won the game.
+        """
         if self.selected_phrase.validated_guessed_word():
             self.setup_screen()
             print("Congratulations! You won the game!!")
@@ -67,6 +86,8 @@ class Game:
         return False
 
     def header(self):
+        """Print the game header to the screen.
+        """
         welcome = "+++++ Phrase Hunter +++++"
         print("*" * len(welcome))
         print(welcome)
@@ -77,6 +98,13 @@ class Game:
         self.selected_phrase.display_phrase()
 
     def play_again(self, answer):
+        """Method to check with the user if they want to play another game
+        
+        Parameters
+        ----------
+        answer : str
+            Yes or No answer provided by the user.
+        """
         self.answer = answer
         if self.answer.lower() == 'y':
             return Game(PHRASES).game_initialization()
