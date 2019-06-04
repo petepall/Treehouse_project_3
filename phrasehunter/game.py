@@ -17,6 +17,20 @@ class Game:
         clear_screen()
         self.header()
 
+    def game_initialization(self):
+        while not self.display_game_won():
+            self.setup_screen()
+            player_guess = self.get_guess()
+            for item in self.selected_phrase:
+                item.check_guess(player_guess)
+            if self.lives == 0:
+                self.setup_screen()
+                self.play_again(input("Oh no! You ran out of lives. "
+                                      "Would you like to play again? Y/n  "))
+                print()
+                break
+        self.play_again(input("Would you like to play again? Y/n  "))
+
     def get_guess(self):
         guess = ""
         while not guess:
@@ -69,17 +83,3 @@ class Game:
             self.setup_screen()
             print("\nThank you for playing. Have a great day!\n")
             sys.exit()
-
-    def game_initialization(self):
-        while not self.display_game_won():
-            self.setup_screen()
-            player_guess = self.get_guess()
-            for item in self.selected_phrase:
-                item.check_guess(player_guess)
-            if self.lives == 0:
-                self.setup_screen()
-                self.play_again(input("Oh no! You ran out of lives. "
-                                      "Would you like to play again? Y/n  "))
-                print()
-                break
-        self.play_again(input("Would you like to play again? Y/n  "))
