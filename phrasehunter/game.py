@@ -25,8 +25,9 @@ class Game:
                 item.check_guess(player_guess)
             if self.lives == 0:
                 self.setup_screen()
-                self.play_again(input("Oh no! You ran out of lives. "
-                                      "Would you like to play again? Y/n  "))
+                self.play_again(input("Oops you did again you lost al your "
+                                      "lives! Would you like to play again? "
+                                      "Y/n  "))
                 print()
                 break
         self.play_again(input("Would you like to play again? Y/n  "))
